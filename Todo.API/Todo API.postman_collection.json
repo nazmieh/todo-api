@@ -1,18 +1,31 @@
 {
 	"info": {
-		"_postman_id": "99e865ab-345a-458b-adca-3778994b6a89",
+		"_postman_id": "620673b0-c83c-48b2-9706-6a08f8f8ed84",
 		"name": "Todo API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Register User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \n    \"email\": \"test4@test.com\",\n    \"password\": \"test123\"\n}",
+					"raw": "{ \n    \"email\": \"test8@test.com\",\n    \"password\": \"test123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +54,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "20e6d6af-11c0-490a-a50b-5b23b4e9aef7",
 						"exec": [
 							"let response = pm.response.json();",
 							"",
@@ -56,12 +68,11 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"test1@test.com\",\n    \"password\": \"test123\"\n}",
+					"raw": "{\n    \"email\": \"test4@test.com\",\n    \"password\": \"test123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
-						},
-						"urlencoded": {}
+						}
 					}
 				},
 				"url": {
@@ -81,6 +92,9 @@
 		},
 		{
 			"name": "Get user by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -90,6 +104,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:5000/api/users",
 					"protocol": "http",
@@ -170,6 +188,9 @@
 		},
 		{
 			"name": "Get all todos (authorized in user)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -179,6 +200,15 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:5000/api/todos",
 					"protocol": "http",
@@ -300,7 +330,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d428ec42-7611-4ad9-bf54-fdd5d6473308",
 						"exec": [
 							"console.log(pm.variables.get('auth-token'));"
 						],
@@ -337,7 +366,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "402af9a3-46c7-45b6-aaa9-cfd26f0013f4",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -347,7 +375,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d5852780-4204-420f-9495-7b35d6370bac",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -357,10 +384,8 @@
 	],
 	"variable": [
 		{
-			"id": "ffb0176d-548a-4765-898d-fc7d71a14658",
 			"key": "auth-token",
 			"value": ""
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
