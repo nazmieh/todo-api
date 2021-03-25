@@ -19,7 +19,9 @@ using Todo.API.Services;
 namespace Todo.API
 {
   public class Startup
+
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,6 +39,7 @@ namespace Todo.API
                     options.SerializerSettings.Converters.Add(new StringEnumConverter());
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
+
             services.AddSwaggerGen(options => {
                 options.SwaggerDoc("v1", new OpenApiInfo()
                 {
@@ -113,6 +116,7 @@ namespace Todo.API
 
         private void ConfigureAuth(IServiceCollection services)
         {
+
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<TodoDbContext>()
                 .AddDefaultTokenProviders();
@@ -139,14 +143,18 @@ namespace Todo.API
 
             var key = Encoding.ASCII.GetBytes(section.Get<AppSettings>().Secret);
 
-            services.AddAuthentication(options => {
+                      
+            _ = services.AddAuthentication(options =>
+            {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(options => {
+            .AddJwtBearer(options =>
+            {
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
-                options.TokenValidationParameters = new TokenValidationParameters() {
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
