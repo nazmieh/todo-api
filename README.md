@@ -9,7 +9,7 @@
 4. Select Todo.API indicated below and click the green Play button.  
  ![image](https://user-images.githubusercontent.com/39741659/112698036-7b99a100-8e91-11eb-9808-5e8a58a7103f.png)
  
- 5. The API should be launced in Swagger:
+ 5. The API should launch in Swagger:
  ![image](https://user-images.githubusercontent.com/39741659/112698123-b0a5f380-8e91-11eb-98d0-c7bdc297f408.png)
  
  6. Launch Google Postman.
