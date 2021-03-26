@@ -12,7 +12,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 422 - User already registered\", function () {\r",
 							"    pm.response.to.have.status(422);\r",
 							"});\r",
 							"\r",
@@ -263,7 +263,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/31/IsComplete",
+					"raw": "http://localhost:5000/api/todos/35/IsComplete",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -272,7 +272,7 @@
 					"path": [
 						"api",
 						"todos",
-						"31",
+						"35",
 						"IsComplete"
 					]
 				}
@@ -474,7 +474,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/31",
+					"raw": "http://localhost:5000/api/todos/35",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -483,7 +483,7 @@
 					"path": [
 						"api",
 						"todos",
-						"31"
+						"35"
 					]
 				}
 			},
@@ -523,7 +523,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/31/IsComplete",
+					"raw": "http://localhost:5000/api/todos/35/IsComplete",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -532,7 +532,7 @@
 					"path": [
 						"api",
 						"todos",
-						"31",
+						"35",
 						"IsComplete"
 					]
 				}
@@ -669,7 +669,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5000/api/todos/31",
+					"raw": "http://localhost:5000/api/todos/35",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -678,7 +678,7 @@
 					"path": [
 						"api",
 						"todos",
-						"31"
+						"35"
 					]
 				}
 			},

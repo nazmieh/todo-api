@@ -1,7 +1,7 @@
 {
-	"id": "9910031c-4739-4d69-bc53-2d6a02a0492f",
+	"id": "334d6d1e-8af2-4e23-9547-8aa98d1fb231",
 	"name": "Todo API",
-	"timestamp": "2021-03-26T22:37:49.647Z",
+	"timestamp": "2021-03-26T23:15:22.752Z",
 	"collection_id": "37a3756d-bb8d-427a-a7b4-c38a351b9a28",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,26 +12,26 @@
 			"id": "f929f69a-f38b-413b-8a51-68279d2c2b8e",
 			"name": "Register User",
 			"url": "http://localhost:5000/api/auth/register",
-			"time": 604,
+			"time": 60,
 			"responseCode": {
 				"code": 422,
 				"name": "Unprocessable Entity"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status code is 422 - User already registered": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status code is 422 - User already registered": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				604
+				60
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status code is 422 - User already registered": true
 				}
 			]
 		},
@@ -39,7 +39,7 @@
 			"id": "6232c035-ad36-4faf-8b28-808b88d01e7b",
 			"name": "Authenticate User",
 			"url": "http://localhost:5000/api/auth",
-			"time": 261,
+			"time": 68,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -54,7 +54,7 @@
 				}
 			},
 			"times": [
-				261
+				68
 			],
 			"allTests": [
 				{
@@ -66,7 +66,7 @@
 			"id": "6862415a-c3c9-4f9e-93c3-79dc55482ca5",
 			"name": "Get user by id (not allowed for User)",
 			"url": "http://localhost:5000/api/users",
-			"time": 60,
+			"time": 5,
 			"responseCode": {
 				"code": 403,
 				"name": "Forbidden"
@@ -81,7 +81,7 @@
 				}
 			},
 			"times": [
-				60
+				5
 			],
 			"allTests": [
 				{
@@ -93,7 +93,7 @@
 			"id": "af331b1e-c0ce-489e-be55-b213082029e1",
 			"name": "Create Todo",
 			"url": "http://localhost:5000/api/todos",
-			"time": 266,
+			"time": 70,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -108,7 +108,7 @@
 				}
 			},
 			"times": [
-				266
+				70
 			],
 			"allTests": [
 				{
@@ -119,8 +119,8 @@
 		{
 			"id": "7b08b186-0809-43fd-af62-8c56f2da1773",
 			"name": "Update IsComplete to False after creating new Todo",
-			"url": "http://localhost:5000/api/todos/31/IsComplete",
-			"time": 110,
+			"url": "http://localhost:5000/api/todos/35/IsComplete",
+			"time": 82,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -135,7 +135,7 @@
 				}
 			},
 			"times": [
-				110
+				82
 			],
 			"allTests": [
 				{
@@ -147,7 +147,7 @@
 			"id": "c4720f29-213e-4db4-ae6b-b606b93a15fb",
 			"name": "Get all todos after creating a  new Todo (authorized in user)",
 			"url": "http://localhost:5000/api/todos",
-			"time": 80,
+			"time": 51,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -182,7 +182,7 @@
 				}
 			},
 			"times": [
-				80
+				51
 			],
 			"allTests": [
 				{
@@ -198,7 +198,7 @@
 			"id": "ea624996-f09d-4a72-9250-f07d775f5801",
 			"name": "Get todo by Id",
 			"url": "http://localhost:5000/api/todos/",
-			"time": 56,
+			"time": 55,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -233,7 +233,7 @@
 				}
 			},
 			"times": [
-				56
+				55
 			],
 			"allTests": [
 				{
@@ -248,7 +248,7 @@
 		{
 			"id": "f16dbd8f-a049-4257-a9ab-e1ca6b5f0138",
 			"name": "Update todo",
-			"url": "http://localhost:5000/api/todos/31",
+			"url": "http://localhost:5000/api/todos/35",
 			"time": 100,
 			"responseCode": {
 				"code": 200,
@@ -275,8 +275,8 @@
 		{
 			"id": "cda130d6-02b8-4fdd-81d8-55a566d16f84",
 			"name": "Update IsComplete to True after updating Todo",
-			"url": "http://localhost:5000/api/todos/31/IsComplete",
-			"time": 77,
+			"url": "http://localhost:5000/api/todos/35/IsComplete",
+			"time": 97,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -291,7 +291,7 @@
 				}
 			},
 			"times": [
-				77
+				97
 			],
 			"allTests": [
 				{
@@ -303,7 +303,7 @@
 			"id": "7e726fef-a5fd-49a3-8058-3d749cdea802",
 			"name": "Get all todos after updating a Todo (authorized in user)",
 			"url": "http://localhost:5000/api/todos",
-			"time": 57,
+			"time": 62,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -338,7 +338,7 @@
 				}
 			},
 			"times": [
-				57
+				62
 			],
 			"allTests": [
 				{
@@ -353,8 +353,8 @@
 		{
 			"id": "1fb644f1-54c9-465d-b854-173fb4d1e58b",
 			"name": "Delete todo",
-			"url": "http://localhost:5000/api/todos/31",
-			"time": 93,
+			"url": "http://localhost:5000/api/todos/35",
+			"time": 86,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -384,7 +384,7 @@
 				}
 			},
 			"times": [
-				93
+				86
 			],
 			"allTests": [
 				{
@@ -399,7 +399,7 @@
 			"id": "1ce7cc8f-6e5a-4c3e-89dc-087616da1757",
 			"name": "Authenticate Admin User",
 			"url": "http://localhost:5000/api/auth",
-			"time": 69,
+			"time": 67,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -414,7 +414,7 @@
 				}
 			},
 			"times": [
-				69
+				67
 			],
 			"allTests": [
 				{
@@ -426,7 +426,7 @@
 			"id": "ad6eeaeb-8266-4d36-a716-96787c474852",
 			"name": "Get all users (Admin only)",
 			"url": "http://localhost:5000/api/users",
-			"time": 53,
+			"time": 49,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -441,7 +441,7 @@
 				}
 			},
 			"times": [
-				53
+				49
 			],
 			"allTests": [
 				{
@@ -453,7 +453,7 @@
 			"id": "70373a64-690e-4cd8-8cee-e3408b838c89",
 			"name": "Get user by id (Admin User)",
 			"url": "http://localhost:5000/api/users",
-			"time": 41,
+			"time": 37,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -483,7 +483,7 @@
 				}
 			},
 			"times": [
-				41
+				37
 			],
 			"allTests": [
 				{
@@ -496,7 +496,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 1927,
+	"totalTime": 889,
 	"collection": {
 		"requests": [
 			{
