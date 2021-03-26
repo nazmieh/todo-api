@@ -20,7 +20,7 @@
 
 Example:
 
-![image](https://user-images.githubusercontent.com/39741659/112699216-0380aa80-8e94-11eb-8de7-f7c28df54e50.png)
+![image](https://user-images.githubusercontent.com/39741659/112699298-31fe8580-8e94-11eb-924d-e500f7c3f5c0.png)
 
 
  10. Increment the ID value in each of the following operations before running the tests:  **UpdateIsComplete (all), UpdateToDo, DeleteToDo**
