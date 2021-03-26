@@ -3,7 +3,7 @@
 **Nazmie -**
 
 **Instructions to run the API tests:**
-1. Create a fork of this repository in your own github account.
+1. Create a fork of this repository into your own github account.
 2. Make a clone of the repo to your Visual Studio IDE on your local machine.
 3. Build the solution in your Visual Studio IDE.
 4. Select Todo.API indicated below and click the green Play button.  
