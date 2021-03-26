@@ -1,5 +1,48 @@
 # Todo API
 
+**Nazmie -**
+
+**Instructions to run the API tests:**
+1. Create a fork of this repository into your own github account.
+2. Make a clone of the repo to your Visual Studio IDE on your local machine.
+3. Build the solution in your Visual Studio IDE.
+4. Select Todo.API indicated below and click the green Play button.  
+
+ ![image](https://user-images.githubusercontent.com/39741659/112698036-7b99a100-8e91-11eb-9808-5e8a58a7103f.png)
+ 
+ 5. The API should launch in Swagger:
+ 
+ ![image](https://user-images.githubusercontent.com/39741659/112698123-b0a5f380-8e91-11eb-98d0-c7bdc297f408.png)
+ 
+ 6. Launch Google Postman.
+ 7. Import the following collection into Google Postman:  **Todo API.postman_collection.json**.
+ 8. Run the DeleteTo operation to remove the last ToDo item created.
+
+Example:
+
+![image](https://user-images.githubusercontent.com/39741659/112699298-31fe8580-8e94-11eb-924d-e500f7c3f5c0.png)
+
+
+ 10. Increment the ID value in each of the following operations before running the tests:  **UpdateIsComplete (all), UpdateToDo, DeleteToDo**
+
+Example:
+
+![image](https://user-images.githubusercontent.com/39741659/112699155-e055fb00-8e93-11eb-93ab-3f0f19ad2257.png)
+
+ 11. Click on the main folder of the collection (ToDo API) and click **Run**:
+ 
+ ![image](https://user-images.githubusercontent.com/39741659/112698628-bb14bd00-8e92-11eb-9bff-1a741f0c9177.png)
+ 
+ 11. Click **Run Todo API**.
+
+![image](https://user-images.githubusercontent.com/39741659/112699016-9cfb8c80-8e93-11eb-9e73-e460db839b7c.png)
+
+ 
+ 
+ **Note:**  Last run test results of the API can be found here:  https://github.com/nazmieh/todo-api/tree/develop/Todo.API/ToDo%20API%20TestResults 
+ ---
+ 
+
 ## Overview
 This is a simple API providing todo list functionality, stored in a sqlite database. The API is secured using JWT Authentication & role-based authorization. 
 
@@ -32,24 +75,6 @@ _Please note:_ the unit tests are currently incomplete.
 * Create a fork of this repository in your own github account
 * If you have any trouble or queries please reach out to us using any of the emails in this README
 Depending on the role being assessed instructions may vary.
-
-### Frontend role
-* Choose a ui framework, preferably React, Angular+ or Vue & create a ui application in folder named **"Todo.UI"**
-* The following functionality should be implemented:
-  * State management
-  * Register a user
-  * Login
-  * View a list of todos
-  * Mark a todo as complete or incomplete from the list
-  * Delete a todo from the list
-  * Add a todo
-  * Edit a todo
-  * Signout
-  * Styling is not a priority
-  * Unit tests; you do not need full coverage. A few components is fine.
-* Please consider your git history as this will be reviewed
-  * Commit & push code regularly
-* Once complete, please send a link to your repository to tim@geminisolution.co.za or elrika@geminisolution.co.za
 
 ## QA Automation
 Looking at the User role requirements, create at least 3 BDD test scenarios.
