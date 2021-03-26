@@ -18,7 +18,12 @@
  7. Import the following collection into Google Postman:  **Todo API.postman_collection.json**.
  8. Run the DeleteTo operation to remove the last ToDo item created.
  9. Increment the ID value in each of the following operations before running the tests:  **UpdateIsComplete (all), UpdateToDo, DeleteToDo**
- 10. Click on the main folder of the collection (ToDo API) and click **Run**:
+
+Example:
+
+![image](https://user-images.githubusercontent.com/39741659/112699155-e055fb00-8e93-11eb-93ab-3f0f19ad2257.png)
+
+ 11. Click on the main folder of the collection (ToDo API) and click **Run**:
  
  ![image](https://user-images.githubusercontent.com/39741659/112698628-bb14bd00-8e92-11eb-9bff-1a741f0c9177.png)
  
