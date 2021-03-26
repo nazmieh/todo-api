@@ -1,5 +1,22 @@
 # Todo API
 
+**Nazmie**
+
+**Instructions to run the API tests:**
+1. Create a fork of this repository in your own github account.
+2. Make a clone of the repo to your Visual Studio IDE on your local machine.
+3. Build the solution in your Visual Studio IDE.
+4. Select Todo.API indicated below and click the green Play button.  
+ ![image](https://user-images.githubusercontent.com/39741659/112698036-7b99a100-8e91-11eb-9808-5e8a58a7103f.png)
+ 5. The API should be launced in Swagger:
+ ![image](https://user-images.githubusercontent.com/39741659/112698123-b0a5f380-8e91-11eb-98d0-c7bdc297f408.png)
+ 6. Launch Google Postman.
+ 7. Import the following collection into Google Postman:  **Todo API.postman_collection.json**.
+ 8. Run the DeleteTo operation to remove the last ToDo item created.
+ 9. Increment the ID value in each of the following operations before running the tests:  UpdateIsComplete (all), UpdateToDo, DeleteToDo
+ 10. Click on the main folder of the collection (ToDo API) and click Run:
+ ![image](https://user-images.githubusercontent.com/39741659/112698628-bb14bd00-8e92-11eb-9bff-1a741f0c9177.png)
+
 ## Overview
 This is a simple API providing todo list functionality, stored in a sqlite database. The API is secured using JWT Authentication & role-based authorization. 
 
