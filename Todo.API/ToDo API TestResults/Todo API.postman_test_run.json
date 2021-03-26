@@ -1,0 +1,560 @@
+{
+	"id": "356cca7f-e31c-4ceb-832f-1e3f9bd38f91",
+	"name": "Todo API",
+	"timestamp": "2021-03-26T22:01:36.808Z",
+	"collection_id": "37a3756d-bb8d-427a-a7b4-c38a351b9a28",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 32,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "f929f69a-f38b-413b-8a51-68279d2c2b8e",
+			"name": "Register User",
+			"url": "http://localhost:5000/api/auth/register",
+			"time": 46,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Entity"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "6232c035-ad36-4faf-8b28-808b88d01e7b",
+			"name": "Authenticate User",
+			"url": "http://localhost:5000/api/auth",
+			"time": 57,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "6862415a-c3c9-4f9e-93c3-79dc55482ca5",
+			"name": "Get user by id (not allowed for User)",
+			"url": "http://localhost:5000/api/users",
+			"time": 2,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403 - User does not have Admin Role": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403 - User does not have Admin Role": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"Status code is 403 - User does not have Admin Role": true
+				}
+			]
+		},
+		{
+			"id": "af331b1e-c0ce-489e-be55-b213082029e1",
+			"name": "Create Todo",
+			"url": "http://localhost:5000/api/todos",
+			"time": 63,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				63
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7b08b186-0809-43fd-af62-8c56f2da1773",
+			"name": "Update IsComplete to False after creating new Todo",
+			"url": "http://localhost:5000/api/todos/30/IsComplete",
+			"time": 79,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				79
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c4720f29-213e-4db4-ae6b-b606b93a15fb",
+			"name": "Get all todos after creating a  new Todo (authorized in user)",
+			"url": "http://localhost:5000/api/todos",
+			"time": 103,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check id": true,
+				"Check title": true,
+				"Check description": true,
+				"Check isComplete": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				103
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check id": true,
+					"Check title": true,
+					"Check description": true,
+					"Check isComplete": true
+				}
+			]
+		},
+		{
+			"id": "ea624996-f09d-4a72-9250-f07d775f5801",
+			"name": "Get todo by Id",
+			"url": "http://localhost:5000/api/todos/",
+			"time": 62,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check id": true,
+				"Check title": true,
+				"Check description": true,
+				"Check isComplete": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				62
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check id": true,
+					"Check title": true,
+					"Check description": true,
+					"Check isComplete": true
+				}
+			]
+		},
+		{
+			"id": "f16dbd8f-a049-4257-a9ab-e1ca6b5f0138",
+			"name": "Update todo",
+			"url": "http://localhost:5000/api/todos/30",
+			"time": 81,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				81
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "cda130d6-02b8-4fdd-81d8-55a566d16f84",
+			"name": "Update IsComplete to True after updating Todo",
+			"url": "http://localhost:5000/api/todos/30/IsComplete",
+			"time": 83,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				83
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7e726fef-a5fd-49a3-8058-3d749cdea802",
+			"name": "Get all todos after updating a Todo (authorized in user)",
+			"url": "http://localhost:5000/api/todos",
+			"time": 52,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check id": true,
+				"Check title": true,
+				"Check description": true,
+				"Check isComplete": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check id": true,
+					"Check title": true,
+					"Check description": true,
+					"Check isComplete": true
+				}
+			]
+		},
+		{
+			"id": "1fb644f1-54c9-465d-b854-173fb4d1e58b",
+			"name": "Delete todo",
+			"url": "http://localhost:5000/api/todos/30",
+			"time": 76,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check title": true,
+				"Check description": true,
+				"Check isComplete": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				76
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check title": true,
+					"Check description": true,
+					"Check isComplete": true
+				}
+			]
+		},
+		{
+			"id": "1ce7cc8f-6e5a-4c3e-89dc-087616da1757",
+			"name": "Authenticate Admin User",
+			"url": "http://localhost:5000/api/auth",
+			"time": 57,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ad6eeaeb-8266-4d36-a716-96787c474852",
+			"name": "Get all users (Admin only)",
+			"url": "http://localhost:5000/api/users",
+			"time": 38,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				38
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "70373a64-690e-4cd8-8cee-e3408b838c89",
+			"name": "Get user by id (Admin User)",
+			"url": "http://localhost:5000/api/users",
+			"time": 100,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Check id": true,
+				"Check Email": true,
+				"Check Username": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Email": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Username": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				100
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Check id": true,
+					"Check Email": true,
+					"Check Username": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 899,
+	"collection": {
+		"requests": [
+			{
+				"id": "f929f69a-f38b-413b-8a51-68279d2c2b8e",
+				"method": "POST"
+			},
+			{
+				"id": "6232c035-ad36-4faf-8b28-808b88d01e7b",
+				"method": "POST"
+			},
+			{
+				"id": "6862415a-c3c9-4f9e-93c3-79dc55482ca5",
+				"method": "GET"
+			},
+			{
+				"id": "af331b1e-c0ce-489e-be55-b213082029e1",
+				"method": "POST"
+			},
+			{
+				"id": "7b08b186-0809-43fd-af62-8c56f2da1773",
+				"method": "PUT"
+			},
+			{
+				"id": "c4720f29-213e-4db4-ae6b-b606b93a15fb",
+				"method": "GET"
+			},
+			{
+				"id": "ea624996-f09d-4a72-9250-f07d775f5801",
+				"method": "GET"
+			},
+			{
+				"id": "f16dbd8f-a049-4257-a9ab-e1ca6b5f0138",
+				"method": "PUT"
+			},
+			{
+				"id": "cda130d6-02b8-4fdd-81d8-55a566d16f84",
+				"method": "PUT"
+			},
+			{
+				"id": "7e726fef-a5fd-49a3-8058-3d749cdea802",
+				"method": "GET"
+			},
+			{
+				"id": "1fb644f1-54c9-465d-b854-173fb4d1e58b",
+				"method": "DELETE"
+			},
+			{
+				"id": "1ce7cc8f-6e5a-4c3e-89dc-087616da1757",
+				"method": "POST"
+			},
+			{
+				"id": "ad6eeaeb-8266-4d36-a716-96787c474852",
+				"method": "GET"
+			},
+			{
+				"id": "70373a64-690e-4cd8-8cee-e3408b838c89",
+				"method": "GET"
+			}
+		]
+	}
+}

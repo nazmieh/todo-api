@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "620673b0-c83c-48b2-9706-6a08f8f8ed84",
+		"_postman_id": "37a3756d-bb8d-427a-a7b4-c38a351b9a28",
 		"name": "Todo API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,8 +13,27 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"});"
+							"    pm.response.to.have.status(422);\r",
+							"});\r",
+							"\r",
+							"console.log(\"User already registered\");\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -25,7 +44,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \n    \"email\": \"test8@test.com\",\n    \"password\": \"test123\"\n}",
+					"raw": "{ \n  \"email\": \"nazmieh1207@gmail.com\",\n  \"password\": \"naz1207\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -55,9 +74,14 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"let response = pm.response.json();",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"",
-							"pm.collectionVariables.set('auth-token', response.token);"
+							"const response = pm.response.json();",
+							"pm.collectionVariables.set('auth-token', response.token);",
+							"",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -68,7 +92,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"test4@test.com\",\n    \"password\": \"test123\"\n}",
+					"raw": "{\n\"email\": \"nazmieh1207@gmail.com\",\n  \"password\": \"naz1207\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -91,7 +115,22 @@
 			"response": []
 		},
 		{
-			"name": "Get user by id",
+			"name": "Get user by id (not allowed for User)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - User does not have Admin Role\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"console.log(\"User does not have an Admin Role\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -106,7 +145,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:5000/api/users",
@@ -126,6 +170,32 @@
 		},
 		{
 			"name": "Create Todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -137,7 +207,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"Title\": \"Test B\",\n    \"Description\": \"Test B\",\n    \"IsComplete\": \"false\"\n}",
+					"raw": "{\n    \"Title\": \"First Book\",\n    \"Description\": \"This is my First Book\",\n    \"IsComplete\": \"true\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -160,9 +230,22 @@
 			"response": []
 		},
 		{
-			"name": "Get todo by Id",
+			"name": "Update IsComplete to False after creating new Todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
@@ -170,8 +253,17 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Value\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/1",
+					"raw": "http://localhost:5000/api/todos/30/IsComplete",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -180,14 +272,60 @@
 					"path": [
 						"api",
 						"todos",
-						"1"
+						"30",
+						"IsComplete"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get all todos (authorized in user)",
+			"name": "Get all todos after creating a  new Todo (authorized in user)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response[0].id);\r",
+							"console.log(response[0].title);\r",
+							"console.log(response[0].description);\r",
+							"console.log(response[0].isComplete);\r",
+							"\r",
+							"pm.collectionVariables.set(\"id\", response[0].id);\r",
+							"pm.collectionVariables.set(\"title\", response[0].title);\r",
+							"pm.collectionVariables.set(\"description\", response[0].description);\r",
+							"pm.collectionVariables.set(\"isComplete\", response[0].isComplete);\r",
+							"\r",
+							"pm.test(\"Check id\", function () {\r",
+							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check title\", function () {\r",
+							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check description\", function () {\r",
+							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check isComplete\", function () {\r",
+							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -225,9 +363,51 @@
 			"response": []
 		},
 		{
-			"name": "Update todo",
+			"name": "Get todo by Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(\"Id is: \" + pm.collectionVariables.get(\"id\"));\r",
+							"console.log(\"Title is: \" + pm.collectionVariables.get(\"title\"));\r",
+							"console.log(\"Description is: \" + pm.collectionVariables.get(\"description\"));\r",
+							"console.log(\"isComplete is: \" + pm.collectionVariables.get(\"isComplete\"));\r",
+							"\r",
+							"pm.test(\"Check id\", function () {\r",
+							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check title\", function () {\r",
+							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check description\", function () {\r",
+							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check isComplete\", function () {\r",
+							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"method": "PUT",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
@@ -235,17 +415,8 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"title\": \"Test Update\",\n    \"description\": \"Test Update\",\n    \"isComplete\": false\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/9",
+					"raw": "http://localhost:5000/api/todos/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -254,14 +425,36 @@
 					"path": [
 						"api",
 						"todos",
-						"9"
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update IsComplete field",
+			"name": "Update todo",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -273,7 +466,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"Value\": false\n}",
+					"raw": "{\n    \"Title\": \"Second Book\",\n    \"Description\": \"This is my Second Book\",\n    \"IsComplete\": \"true\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -281,7 +474,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/1/IsComplete",
+					"raw": "http://localhost:5000/api/todos/30",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -290,7 +483,56 @@
 					"path": [
 						"api",
 						"todos",
-						"1",
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update IsComplete to True after updating Todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Value\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/todos/30/IsComplete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"30",
 						"IsComplete"
 					]
 				}
@@ -298,7 +540,125 @@
 			"response": []
 		},
 		{
+			"name": "Get all todos after updating a Todo (authorized in user)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response[0].id);\r",
+							"console.log(response[0].title);\r",
+							"console.log(response[0].description);\r",
+							"console.log(response[0].isComplete);\r",
+							"\r",
+							"pm.collectionVariables.set(\"id\", response[0].id);\r",
+							"pm.collectionVariables.set(\"title\", response[0].title);\r",
+							"pm.collectionVariables.set(\"description\", response[0].description);\r",
+							"pm.collectionVariables.set(\"isComplete\", response[0].isComplete);\r",
+							"\r",
+							"pm.test(\"Check id\", function () {\r",
+							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check title\", function () {\r",
+							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check description\", function () {\r",
+							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check isComplete\", function () {\r",
+							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Delete todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(\"The following book was deleted: \");\r",
+							"\r",
+							"console.log(response.title);\r",
+							"console.log(response.description);\r",
+							"console.log(response.isComplete);\r",
+							"console.log(response.lastUpdate);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check title\", function () {\r",
+							"    pm.expect(response.title).to.eql(pm.collectionVariables.get(\"title\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check description\", function () {\r",
+							"    pm.expect(response.description).to.eql(pm.collectionVariables.get(\"description\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check isComplete\", function () {\r",
+							"    pm.expect(response.isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -309,7 +669,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5000/api/todos/8",
+					"raw": "http://localhost:5000/api/todos/30",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -318,7 +678,54 @@
 					"path": [
 						"api",
 						"todos",
-						"8"
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate Admin User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"pm.collectionVariables.set('auth-token', response.token);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"admin@test.com\",\n  \"password\": \"test123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth"
 					]
 				}
 			},
@@ -331,7 +738,25 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"console.log(pm.variables.get('auth-token'));"
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"console.log(pm.variables.get('auth-token'));\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response[23].id);\r",
+							"console.log(response[23].email);\r",
+							"console.log(response[23].username);\r",
+							"\r",
+							"pm.collectionVariables.set(\"id\", response[23].id);\r",
+							"pm.collectionVariables.set(\"email\", response[23].email);\r",
+							"pm.collectionVariables.set(\"username\", response[23].username);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -360,6 +785,80 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get user by id (Admin User)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(\"Id is: \" + pm.collectionVariables.get(\"id\"));\r",
+							"console.log(\"Email is: \" + pm.collectionVariables.get(\"email\"));\r",
+							"console.log(\"Username is: \" + pm.collectionVariables.get(\"username\"));\r",
+							"\r",
+							"pm.test(\"Check id\", function () {\r",
+							"    pm.expect(response[23].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check Email\", function () {\r",
+							"    pm.expect(response[23].email).to.eql(pm.collectionVariables.get(\"email\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check Username\", function () {\r",
+							"    pm.expect(response[23].username).to.eql(pm.collectionVariables.get(\"username\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Get user by id\n\nMust be admin\nCan only retrieve yourself, i.e., the logged in use"
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -385,6 +884,30 @@
 	"variable": [
 		{
 			"key": "auth-token",
+			"value": ""
+		},
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "title",
+			"value": ""
+		},
+		{
+			"key": "description",
+			"value": ""
+		},
+		{
+			"key": "isComplete",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "username",
 			"value": ""
 		}
 	]
