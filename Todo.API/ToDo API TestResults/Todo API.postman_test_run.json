@@ -1,7 +1,7 @@
 {
-	"id": "334d6d1e-8af2-4e23-9547-8aa98d1fb231",
+	"id": "3aedf017-f0b1-490f-98dc-6f13d5492a2d",
 	"name": "Todo API",
-	"timestamp": "2021-03-26T23:15:22.752Z",
+	"timestamp": "2021-03-28T16:24:02.736Z",
 	"collection_id": "37a3756d-bb8d-427a-a7b4-c38a351b9a28",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,7 +12,7 @@
 			"id": "f929f69a-f38b-413b-8a51-68279d2c2b8e",
 			"name": "Register User",
 			"url": "http://localhost:5000/api/auth/register",
-			"time": 60,
+			"time": 48,
 			"responseCode": {
 				"code": 422,
 				"name": "Unprocessable Entity"
@@ -27,7 +27,7 @@
 				}
 			},
 			"times": [
-				60
+				48
 			],
 			"allTests": [
 				{
@@ -39,70 +39,16 @@
 			"id": "6232c035-ad36-4faf-8b28-808b88d01e7b",
 			"name": "Authenticate User",
 			"url": "http://localhost:5000/api/auth",
-			"time": 68,
+			"time": 70,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status code is 200 - Registered User authenticated successfully": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				68
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "6862415a-c3c9-4f9e-93c3-79dc55482ca5",
-			"name": "Get user by id (not allowed for User)",
-			"url": "http://localhost:5000/api/users",
-			"time": 5,
-			"responseCode": {
-				"code": 403,
-				"name": "Forbidden"
-			},
-			"tests": {
-				"Status code is 403 - User does not have Admin Role": true
-			},
-			"testPassFailCounts": {
-				"Status code is 403 - User does not have Admin Role": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Status code is 403 - User does not have Admin Role": true
-				}
-			]
-		},
-		{
-			"id": "af331b1e-c0ce-489e-be55-b213082029e1",
-			"name": "Create Todo",
-			"url": "http://localhost:5000/api/todos",
-			"time": 70,
-			"responseCode": {
-				"code": 201,
-				"name": "Created"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status code is 200 - Registered User authenticated successfully": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -112,24 +58,327 @@
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status code is 200 - Registered User authenticated successfully": true
+				}
+			]
+		},
+		{
+			"id": "6862415a-c3c9-4f9e-93c3-79dc55482ca5",
+			"name": "Get user by id (not allowed for User)",
+			"url": "http://localhost:5000/api/users",
+			"time": 3,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403 - Registered User does not have Admin Role": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403 - Registered User does not have Admin Role": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 403 - Registered User does not have Admin Role": true
+				}
+			]
+		},
+		{
+			"id": "af331b1e-c0ce-489e-be55-b213082029e1",
+			"name": "Create Todo",
+			"url": "http://localhost:5000/api/todos",
+			"time": 59,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201 - Todo item successfully created for Registered User": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201 - Todo item successfully created for Registered User": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Status code is 201 - Todo item successfully created for Registered User": true
 				}
 			]
 		},
 		{
 			"id": "7b08b186-0809-43fd-af62-8c56f2da1773",
 			"name": "Update IsComplete to False after creating new Todo",
-			"url": "http://localhost:5000/api/todos/35/IsComplete",
+			"url": "http://localhost:5000/api/todos/39/IsComplete",
+			"time": 75,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 - Updated IsComplete to False of Todo item for Registered User": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 - Updated IsComplete to False of Todo item for Registered User": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				75
+			],
+			"allTests": [
+				{
+					"Status code is 200 - Updated IsComplete to False of Todo item for Registered User": true
+				}
+			]
+		},
+		{
+			"id": "c4720f29-213e-4db4-ae6b-b606b93a15fb",
+			"name": "Get all todos after creating a  new Todo (authorized user)",
+			"url": "http://localhost:5000/api/todos",
+			"time": 50,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 - All Todos of Registered User returned successfully after creating new Todo item": true,
+				"Check id of Registered User": true,
+				"Check title of Todo item from Registered User": true,
+				"Check description of Todo item from Registered User": true,
+				"Check isComplete of Todo item from Registered User": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 - All Todos of Registered User returned successfully after creating new Todo item": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id of Registered User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title of Todo item from Registered User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description of Todo item from Registered User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete of Todo item from Registered User": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				50
+			],
+			"allTests": [
+				{
+					"Status code is 200 - All Todos of Registered User returned successfully after creating new Todo item": true,
+					"Check id of Registered User": true,
+					"Check title of Todo item from Registered User": true,
+					"Check description of Todo item from Registered User": true,
+					"Check isComplete of Todo item from Registered User": true
+				}
+			]
+		},
+		{
+			"id": "ea624996-f09d-4a72-9250-f07d775f5801",
+			"name": "Get todo by Id",
+			"url": "http://localhost:5000/api/todos/",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 - Todo item specified successfully returned": true,
+				"Check id of Registered User": true,
+				"Check title of Todo from Registered User": true,
+				"Check description of Todo from Registered User": true,
+				"Check isComplete of Todo from Registered User": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 - Todo item specified successfully returned": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id of Registered User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title of Todo from Registered User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description of Todo from Registered User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete of Todo from Registered User": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"Status code is 200 - Todo item specified successfully returned": true,
+					"Check id of Registered User": true,
+					"Check title of Todo from Registered User": true,
+					"Check description of Todo from Registered User": true,
+					"Check isComplete of Todo from Registered User": true
+				}
+			]
+		},
+		{
+			"id": "f16dbd8f-a049-4257-a9ab-e1ca6b5f0138",
+			"name": "Update todo",
+			"url": "http://localhost:5000/api/todos/39",
+			"time": 132,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 - Todo item of Registered User successfully updated": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 - Todo item of Registered User successfully updated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				132
+			],
+			"allTests": [
+				{
+					"Status code is 200 - Todo item of Registered User successfully updated": true
+				}
+			]
+		},
+		{
+			"id": "cda130d6-02b8-4fdd-81d8-55a566d16f84",
+			"name": "Update IsComplete to True after updating Todo",
+			"url": "http://localhost:5000/api/todos/39/IsComplete",
+			"time": 89,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200  - Updated IsComplete to True of Todo item for Registered User": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200  - Updated IsComplete to True of Todo item for Registered User": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				89
+			],
+			"allTests": [
+				{
+					"Status code is 200  - Updated IsComplete to True of Todo item for Registered User": true
+				}
+			]
+		},
+		{
+			"id": "7e726fef-a5fd-49a3-8058-3d749cdea802",
+			"name": "Get all todos after updating a Todo (authorized user)",
+			"url": "http://localhost:5000/api/todos",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 - All Todos of Registered User returned successfully after updating existing Todo item": true,
+				"Check id of Todo item from User": true,
+				"Check title of Todo item from User": true,
+				"Check description of Todo item from User": true,
+				"Check isComplete of Todo item from User": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 - All Todos of Registered User returned successfully after updating existing Todo item": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id of Todo item from User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title of Todo item from User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description of Todo item from User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete of Todo item from User": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"Status code is 200 - All Todos of Registered User returned successfully after updating existing Todo item": true,
+					"Check id of Todo item from User": true,
+					"Check title of Todo item from User": true,
+					"Check description of Todo item from User": true,
+					"Check isComplete of Todo item from User": true
+				}
+			]
+		},
+		{
+			"id": "1fb644f1-54c9-465d-b854-173fb4d1e58b",
+			"name": "Delete todo",
+			"url": "http://localhost:5000/api/todos/39",
 			"time": 82,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status code is 200 - Todo item deleted successfuly from Registered User": true,
+				"Check title of deleted Todo item": true,
+				"Check description of deleted Todo item": true,
+				"Check isComplete of deleted Todo item": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status code is 200 - Todo item deleted successfuly from Registered User": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check title of deleted Todo item": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check description of deleted Todo item": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check isComplete of deleted Todo item": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -139,259 +388,10 @@
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "c4720f29-213e-4db4-ae6b-b606b93a15fb",
-			"name": "Get all todos after creating a  new Todo (authorized in user)",
-			"url": "http://localhost:5000/api/todos",
-			"time": 51,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Check id": true,
-				"Check title": true,
-				"Check description": true,
-				"Check isComplete": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check id": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check title": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check description": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check isComplete": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				51
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Check id": true,
-					"Check title": true,
-					"Check description": true,
-					"Check isComplete": true
-				}
-			]
-		},
-		{
-			"id": "ea624996-f09d-4a72-9250-f07d775f5801",
-			"name": "Get todo by Id",
-			"url": "http://localhost:5000/api/todos/",
-			"time": 55,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Check id": true,
-				"Check title": true,
-				"Check description": true,
-				"Check isComplete": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check id": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check title": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check description": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check isComplete": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				55
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Check id": true,
-					"Check title": true,
-					"Check description": true,
-					"Check isComplete": true
-				}
-			]
-		},
-		{
-			"id": "f16dbd8f-a049-4257-a9ab-e1ca6b5f0138",
-			"name": "Update todo",
-			"url": "http://localhost:5000/api/todos/35",
-			"time": 100,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				100
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "cda130d6-02b8-4fdd-81d8-55a566d16f84",
-			"name": "Update IsComplete to True after updating Todo",
-			"url": "http://localhost:5000/api/todos/35/IsComplete",
-			"time": 97,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				97
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "7e726fef-a5fd-49a3-8058-3d749cdea802",
-			"name": "Get all todos after updating a Todo (authorized in user)",
-			"url": "http://localhost:5000/api/todos",
-			"time": 62,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Check id": true,
-				"Check title": true,
-				"Check description": true,
-				"Check isComplete": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check id": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check title": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check description": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check isComplete": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				62
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Check id": true,
-					"Check title": true,
-					"Check description": true,
-					"Check isComplete": true
-				}
-			]
-		},
-		{
-			"id": "1fb644f1-54c9-465d-b854-173fb4d1e58b",
-			"name": "Delete todo",
-			"url": "http://localhost:5000/api/todos/35",
-			"time": 86,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Check title": true,
-				"Check description": true,
-				"Check isComplete": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check title": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check description": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Check isComplete": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				86
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Check title": true,
-					"Check description": true,
-					"Check isComplete": true
+					"Status code is 200 - Todo item deleted successfuly from Registered User": true,
+					"Check title of deleted Todo item": true,
+					"Check description of deleted Todo item": true,
+					"Check isComplete of deleted Todo item": true
 				}
 			]
 		},
@@ -399,26 +399,26 @@
 			"id": "1ce7cc8f-6e5a-4c3e-89dc-087616da1757",
 			"name": "Authenticate Admin User",
 			"url": "http://localhost:5000/api/auth",
-			"time": 67,
+			"time": 58,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status code is 200 - Admin User authenticated successfully": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status code is 200 - Admin User authenticated successfully": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				67
+				58
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status code is 200 - Admin User authenticated successfully": true
 				}
 			]
 		},
@@ -426,26 +426,26 @@
 			"id": "ad6eeaeb-8266-4d36-a716-96787c474852",
 			"name": "Get all users (Admin only)",
 			"url": "http://localhost:5000/api/users",
-			"time": 49,
+			"time": 39,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status code is 200 - All users returned successfully": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status code is 200 - All users returned successfully": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				49
+				39
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status code is 200 - All users returned successfully": true
 				}
 			]
 		},
@@ -453,50 +453,50 @@
 			"id": "70373a64-690e-4cd8-8cee-e3408b838c89",
 			"name": "Get user by id (Admin User)",
 			"url": "http://localhost:5000/api/users",
-			"time": 37,
+			"time": 38,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true,
-				"Check id": true,
-				"Check Email": true,
-				"Check Username": true
+				"Status code is 200 - Registered User successfully returned": true,
+				"Check id of Registered User": true,
+				"Check Email of Registered User": true,
+				"Check Username of Registered User": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status code is 200 - Registered User successfully returned": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Check id": {
+				"Check id of Registered User": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Check Email": {
+				"Check Email of Registered User": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Check Username": {
+				"Check Username of Registered User": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				37
+				38
 			],
 			"allTests": [
 				{
-					"Status code is 200": true,
-					"Check id": true,
-					"Check Email": true,
-					"Check Username": true
+					"Status code is 200 - Registered User successfully returned": true,
+					"Check id of Registered User": true,
+					"Check Email of Registered User": true,
+					"Check Username of Registered User": true
 				}
 			]
 		}
 	],
 	"count": 1,
-	"totalTime": 889,
+	"totalTime": 855,
 	"collection": {
 		"requests": [
 			{

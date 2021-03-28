@@ -74,7 +74,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200 - Registered User authenticated successfully\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
@@ -121,7 +121,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 403 - User does not have Admin Role\", function () {\r",
+							"pm.test(\"Status code is 403 - Registered User does not have Admin Role\", function () {\r",
 							"    pm.response.to.have.status(403);\r",
 							"});\r",
 							"\r",
@@ -175,7 +175,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 201 - Todo item successfully created for Registered User\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
@@ -236,7 +236,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - Updated IsComplete to False of Todo item for Registered User\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -263,7 +263,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/35/IsComplete",
+					"raw": "http://localhost:5000/api/todos/39/IsComplete",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -272,7 +272,7 @@
 					"path": [
 						"api",
 						"todos",
-						"35",
+						"39",
 						"IsComplete"
 					]
 				}
@@ -280,13 +280,13 @@
 			"response": []
 		},
 		{
-			"name": "Get all todos after creating a  new Todo (authorized in user)",
+			"name": "Get all todos after creating a  new Todo (authorized user)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - All Todos of Registered User returned successfully after creating new Todo item\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -302,19 +302,19 @@
 							"pm.collectionVariables.set(\"description\", response[0].description);\r",
 							"pm.collectionVariables.set(\"isComplete\", response[0].isComplete);\r",
 							"\r",
-							"pm.test(\"Check id\", function () {\r",
+							"pm.test(\"Check id of Registered User\", function () {\r",
 							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check title\", function () {\r",
+							"pm.test(\"Check title of Todo item from Registered User\", function () {\r",
 							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check description\", function () {\r",
+							"pm.test(\"Check description of Todo item from Registered User\", function () {\r",
 							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check isComplete\", function () {\r",
+							"pm.test(\"Check isComplete of Todo item from Registered User\", function () {\r",
 							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
 							"});\r",
 							"\r",
@@ -369,7 +369,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - Todo item specified successfully returned\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -380,19 +380,19 @@
 							"console.log(\"Description is: \" + pm.collectionVariables.get(\"description\"));\r",
 							"console.log(\"isComplete is: \" + pm.collectionVariables.get(\"isComplete\"));\r",
 							"\r",
-							"pm.test(\"Check id\", function () {\r",
+							"pm.test(\"Check id of Registered User\", function () {\r",
 							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check title\", function () {\r",
+							"pm.test(\"Check title of Todo from Registered User\", function () {\r",
 							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check description\", function () {\r",
+							"pm.test(\"Check description of Todo from Registered User\", function () {\r",
 							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check isComplete\", function () {\r",
+							"pm.test(\"Check isComplete of Todo from Registered User\", function () {\r",
 							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
 							"});\r",
 							"\r",
@@ -447,7 +447,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - Todo item of Registered User successfully updated\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -474,7 +474,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/35",
+					"raw": "http://localhost:5000/api/todos/39",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -483,7 +483,7 @@
 					"path": [
 						"api",
 						"todos",
-						"35"
+						"39"
 					]
 				}
 			},
@@ -496,7 +496,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200  - Updated IsComplete to True of Todo item for Registered User\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -523,7 +523,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/35/IsComplete",
+					"raw": "http://localhost:5000/api/todos/39/IsComplete",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -532,7 +532,7 @@
 					"path": [
 						"api",
 						"todos",
-						"35",
+						"39",
 						"IsComplete"
 					]
 				}
@@ -540,13 +540,13 @@
 			"response": []
 		},
 		{
-			"name": "Get all todos after updating a Todo (authorized in user)",
+			"name": "Get all todos after updating a Todo (authorized user)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - All Todos of Registered User returned successfully after updating existing Todo item\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -562,19 +562,19 @@
 							"pm.collectionVariables.set(\"description\", response[0].description);\r",
 							"pm.collectionVariables.set(\"isComplete\", response[0].isComplete);\r",
 							"\r",
-							"pm.test(\"Check id\", function () {\r",
+							"pm.test(\"Check id of Todo item from User\", function () {\r",
 							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check title\", function () {\r",
+							"pm.test(\"Check title of Todo item from User\", function () {\r",
 							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check description\", function () {\r",
+							"pm.test(\"Check description of Todo item from User\", function () {\r",
 							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check isComplete\", function () {\r",
+							"pm.test(\"Check isComplete of Todo item from User\", function () {\r",
 							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
 							"});\r",
 							"\r",
@@ -629,7 +629,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - Todo item deleted successfuly from Registered User\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -643,15 +643,15 @@
 							"console.log(response.lastUpdate);\r",
 							"\r",
 							"\r",
-							"pm.test(\"Check title\", function () {\r",
+							"pm.test(\"Check title of deleted Todo item\", function () {\r",
 							"    pm.expect(response.title).to.eql(pm.collectionVariables.get(\"title\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check description\", function () {\r",
+							"pm.test(\"Check description of deleted Todo item\", function () {\r",
 							"    pm.expect(response.description).to.eql(pm.collectionVariables.get(\"description\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check isComplete\", function () {\r",
+							"pm.test(\"Check isComplete of deleted Todo item\", function () {\r",
 							"    pm.expect(response.isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
 							"});"
 						],
@@ -669,7 +669,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5000/api/todos/35",
+					"raw": "http://localhost:5000/api/todos/39",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -678,7 +678,7 @@
 					"path": [
 						"api",
 						"todos",
-						"35"
+						"39"
 					]
 				}
 			},
@@ -691,7 +691,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200 - Admin User authenticated successfully\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
@@ -738,7 +738,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - All users returned successfully\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"console.log(pm.variables.get('auth-token'));\r",
@@ -793,7 +793,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200 - Registered User successfully returned\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -803,15 +803,15 @@
 							"console.log(\"Email is: \" + pm.collectionVariables.get(\"email\"));\r",
 							"console.log(\"Username is: \" + pm.collectionVariables.get(\"username\"));\r",
 							"\r",
-							"pm.test(\"Check id\", function () {\r",
+							"pm.test(\"Check id of Registered User\", function () {\r",
 							"    pm.expect(response[23].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check Email\", function () {\r",
+							"pm.test(\"Check Email of Registered User\", function () {\r",
 							"    pm.expect(response[23].email).to.eql(pm.collectionVariables.get(\"email\"));\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Check Username\", function () {\r",
+							"pm.test(\"Check Username of Registered User\", function () {\r",
 							"    pm.expect(response[23].username).to.eql(pm.collectionVariables.get(\"username\"));\r",
 							"});\r",
 							"\r",
