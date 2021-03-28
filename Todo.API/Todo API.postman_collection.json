@@ -263,7 +263,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/39/IsComplete",
+					"raw": "http://localhost:5000/api/todos/40/IsComplete",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -272,7 +272,7 @@
 					"path": [
 						"api",
 						"todos",
-						"39",
+						"40",
 						"IsComplete"
 					]
 				}
@@ -280,13 +280,13 @@
 			"response": []
 		},
 		{
-			"name": "Get all todos after creating a  new Todo (authorized user)",
+			"name": "Get all todos after creating a  new Todo of authorized Registered user",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200 - All Todos of Registered User returned successfully after creating new Todo item\", function () {\r",
+							"pm.test(\"Status code is 200 - All Todos of Registered User returned successfully after creating a new Todo item\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -301,22 +301,6 @@
 							"pm.collectionVariables.set(\"title\", response[0].title);\r",
 							"pm.collectionVariables.set(\"description\", response[0].description);\r",
 							"pm.collectionVariables.set(\"isComplete\", response[0].isComplete);\r",
-							"\r",
-							"pm.test(\"Check id of Registered User\", function () {\r",
-							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check title of Todo item from Registered User\", function () {\r",
-							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check description of Todo item from Registered User\", function () {\r",
-							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check isComplete of Todo item from Registered User\", function () {\r",
-							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
-							"});\r",
 							"\r",
 							"\r",
 							"\r",
@@ -363,13 +347,13 @@
 			"response": []
 		},
 		{
-			"name": "Get todo by Id",
+			"name": "Get todo by Id after creating a new Todo item of authorized Registered user",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200 - Todo item specified successfully returned\", function () {\r",
+							"pm.test(\"Status code is 200 - New Todo item specified successfully returned\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -474,7 +458,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/39",
+					"raw": "http://localhost:5000/api/todos/40",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -483,14 +467,14 @@
 					"path": [
 						"api",
 						"todos",
-						"39"
+						"40"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update IsComplete to True after updating Todo",
+			"name": "Update IsComplete to True after updating Todo item",
 			"event": [
 				{
 					"listen": "test",
@@ -523,7 +507,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/todos/39/IsComplete",
+					"raw": "http://localhost:5000/api/todos/40/IsComplete",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -532,7 +516,7 @@
 					"path": [
 						"api",
 						"todos",
-						"39",
+						"40",
 						"IsComplete"
 					]
 				}
@@ -562,21 +546,6 @@
 							"pm.collectionVariables.set(\"description\", response[0].description);\r",
 							"pm.collectionVariables.set(\"isComplete\", response[0].isComplete);\r",
 							"\r",
-							"pm.test(\"Check id of Todo item from User\", function () {\r",
-							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check title of Todo item from User\", function () {\r",
-							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check description of Todo item from User\", function () {\r",
-							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check isComplete of Todo item from User\", function () {\r",
-							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
-							"});\r",
 							"\r",
 							"\r",
 							"\r",
@@ -617,6 +586,75 @@
 					"path": [
 						"api",
 						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get todo by Id after updating Todo item of authorized Registered User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 - Updated Todo item specified successfully returned\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(\"Id is: \" + pm.collectionVariables.get(\"id\"));\r",
+							"console.log(\"Title is: \" + pm.collectionVariables.get(\"title\"));\r",
+							"console.log(\"Description is: \" + pm.collectionVariables.get(\"description\"));\r",
+							"console.log(\"isComplete is: \" + pm.collectionVariables.get(\"isComplete\"));\r",
+							"\r",
+							"pm.test(\"Check id of Registered User\", function () {\r",
+							"    pm.expect(response[0].id).to.eql(pm.collectionVariables.get(\"id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check title of Todo from Registered User\", function () {\r",
+							"    pm.expect(response[0].title).to.eql(pm.collectionVariables.get(\"title\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check description of Todo from Registered User\", function () {\r",
+							"    pm.expect(response[0].description).to.eql(pm.collectionVariables.get(\"description\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check isComplete of Todo from Registered User\", function () {\r",
+							"    pm.expect(response[0].isComplete).to.eql(pm.collectionVariables.get(\"isComplete\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/todos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						""
 					]
 				}
 			},
@@ -669,7 +707,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5000/api/todos/39",
+					"raw": "http://localhost:5000/api/todos/40",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -678,7 +716,7 @@
 					"path": [
 						"api",
 						"todos",
-						"39"
+						"40"
 					]
 				}
 			},
